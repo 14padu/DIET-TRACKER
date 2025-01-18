@@ -16,7 +16,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use("/api", Person)
+//app.use("/api", Person)
 
 // SERVE STATIC FILES
 app.use(express.static(path.join(__dirname, "./client/build")));
