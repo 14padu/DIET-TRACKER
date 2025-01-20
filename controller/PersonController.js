@@ -29,8 +29,8 @@ exports.getAllPerson= async (req, res) => {
 exports.getPersonById = async (req, res) => {
     try {
         const PersonById = await PersonModel.findById(req.params.id);
-        if (!dietById) return res.status(404).send('Person not found in database');
-        res.send(dietById);
+        if (!PersonById) return res.status(404).send('Person not found in database');
+        res.send(PersonById);
     } catch (err) {
         res.status(400).send(err.message);
     }
