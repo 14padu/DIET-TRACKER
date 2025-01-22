@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  Slide,
-  ToastContainer,
-  toast
-} from 'react-toastify';
+import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Container,
@@ -16,8 +12,6 @@ import {
   Paper,
 } from '@mui/material';
 import axios from 'axios';
-
-const URL = process.env.REACT_APP_URL;
 
 const CreatePerson = () => {
   const navigate = useNavigate();
@@ -33,53 +27,48 @@ const CreatePerson = () => {
     setPerson({ ...person, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-
-    axios
-      .post(`https://3000-14padu-diettracker-lc4eb9tqp5a.ws-us117.gitpod.io/api/Person`, person)
-      .then(() => {
-        setPerson({
-          name: '',
-          age: '',
-          contact_number: '',
-          weight: '',
-          BMI: '',
-        });
-
-        toast.success('Person added successfully!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "dark",
-          transition: Slide,
-        });
-
-        setTimeout(() => {
-          navigate('/');
-        }, 2000);
-      })
-      .catch(() => {
-        toast.error('Something went wrong, try again!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "dark",
-          transition: Slide,
-        });
+    try {
+      await axios.post('https://3000-14padu-diettracker-tae6iccs57n.ws-us117.gitpod.io/api/Person', person); // Use relative URL for better portability
+      setPerson({
+        name: '',
+        age: '',
+        contact_number: '',
+        weight: '',
+        BMI: '',
       });
+
+      toast.success('Person added successfully!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        transition: Slide,
+      });
+
+      setTimeout(() => navigate('/'), 2000);
+    } catch (error) {
+      toast.error('Something went wrong, try again!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+        transition: Slide,
+      });
+    }
   };
 
   return (
     <Container maxWidth="sm" sx={{ py: 5 }}>
       <ToastContainer theme="dark" />
-      <Paper elevation={3} sx={{ p: 4, backgroundColor: 'background.paper', color: 'text.primary' }}>
+      <Paper elevation={3} sx={{ p: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom textAlign="center">
           Add Person
         </Typography>
@@ -89,80 +78,32 @@ const CreatePerson = () => {
 
         <form onSubmit={onSubmit}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Name"
-                name="name"
-                variant="outlined"
-                value={person.name}
-                onChange={onChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Age"
-                name="age"
-                variant="outlined"
-                type="number"
-                value={person.age}
-                onChange={onChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Weight"
-                name="weight"
-                variant="outlined"
-                type="number"
-                value={person.weight}
-                onChange={onChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="BMI"
-                name="BMI"
-                variant="outlined"
-                type="number"
-                value={person.BMI}
-                onChange={onChange}
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Contact Number"
-                name="contact_number"
-                variant="outlined"
-                type="tel"
-                value={person.contact_number}
-                onChange={onChange}
-                required
-              />
-            </Grid>
+            {[
+              { label: 'Name', name: 'name', type: 'text' },
+              { label: 'Age', name: 'age', type: 'number' },
+              { label: 'Weight', name: 'weight', type: 'number' },
+              { label: 'BMI', name: 'BMI', type: 'number' },
+              { label: 'Contact Number', name: 'contact_number', type: 'tel' },
+            ].map((field) => (
+              <Grid item xs={12} key={field.name}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  variant="outlined"
+                  type={field.type}
+                  value={person[field.name]}
+                  onChange={onChange}
+                  required
+                />
+              </Grid>
+            ))}
             <Grid item xs={12}>
               <Box display="flex" justifyContent="space-between">
-                <Button
-                  component={Link}
-                  to="/"
-                  variant="outlined"
-                  color="secondary"
-                >
+                <Button component={Link} to="/" variant="outlined" color="secondary">
                   Back to List
                 </Button>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                >
+                <Button type="submit" variant="contained" color="primary">
                   Submit
                 </Button>
               </Box>
@@ -175,4 +116,3 @@ const CreatePerson = () => {
 };
 
 export default CreatePerson;
-
