@@ -28,7 +28,7 @@ const UpdatePersonInfo = () => {
 
   useEffect(() => {
     axios
-      .get(`mongodb+srv://diet_tracker_admin:diet_tracker_admin@diet-tracker.jsni9.mongodb.net/?retryWrites=true&w=majority&appName=diet-tracker/api/Persons/${id}`)
+      .get(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person/${id}`)
       .then((res) => setPerson(res.data))
       .catch(() => toast.error("Failed to fetch person details!", { theme: "dark" }));
   }, [id]);
@@ -40,7 +40,7 @@ const UpdatePersonInfo = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`mongodb+srv://diet_tracker_admin:diet_tracker_admin@diet-tracker.jsni9.mongodb.net/?retryWrites=true&w=majority&appName=diet-tracker/api/Persons/${id}`, person)
+      .put(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person/${id}`, person)
       .then(() => {
         toast.success("Person updated successfully!", { theme: "dark" });
         setTimeout(() => navigate(`/detail/${id}`), 2000);

@@ -36,7 +36,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`mongodb+srv://diet_tracker_admin:diet_tracker_admin@diet-tracker.jsni9.mongodb.net/?retryWrites=true&w=majority&appName=diet-tracker/api/Persons`)
+    axios.get(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person`)
       .then(res => {
         const person = res.data;
         const uniquePerson = new Set(person.map(person => person.author)).size;
@@ -204,7 +204,7 @@ const HomePage = () => {
           <Grid item xs={12} sm={6} md={4}>
             <Button
               component="a"
-              href="https://github.com/14padu/DIET-TRACKER.git"
+              href="https://github.com/14padu/DIET-TRACKER"
               target="_blank"
               rel="noopener noreferrer"
               variant="contained"

@@ -34,7 +34,7 @@ const SearchPerson = () => {
 
   useEffect(() => {
     axios
-      .get(`mongodb+srv://diet_tracker_admin:diet_tracker_admin@diet-tracker.jsni9.mongodb.net/?retryWrites=true&w=majority&appName=diet-tracker/api/Persons`)
+      .get(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person`)
       .then((res) => {
         setPerson(res.data);
         setFilteredPerson(res.data);
