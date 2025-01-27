@@ -36,7 +36,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`${URL}/api/diets`)
+    axios.get(`mongodb+srv://diet_tracker_admin:diet_tracker_admin@diet-tracker.jsni9.mongodb.net/?retryWrites=true&w=majority&appName=diet-tracker/api/Persons`)
       .then(res => {
         const person = res.data;
         const uniquePerson = new Set(person.map(person => person.author)).size;
@@ -52,7 +52,7 @@ const HomePage = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error fetching stats:', err);
+        console.error('Error fetching states:', err);
         setLoading(false);
       });
   }, []);

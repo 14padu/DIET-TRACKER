@@ -30,7 +30,7 @@ const CreatePerson = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://3000-14padu-diettracker-tae6iccs57n.ws-us117.gitpod.io/api/Person', person); // Use relative URL for better portability
+      await axios.post('mongodb+srv://diet_tracker_admin:diet_tracker_admin@diet-tracker.jsni9.mongodb.net/?retryWrites=true&w=majority&appName=diet-tracker/api/Persons', person); // Use relative URL for better portability
       setPerson({
         name: '',
         age: '',

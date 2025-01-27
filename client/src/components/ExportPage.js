@@ -17,7 +17,7 @@ const ExportPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`${URL}/api/diets`)
+    axios.get(`mongodb+srv://diet_tracker_admin:diet_tracker_admin@diet-tracker.jsni9.mongodb.net/?retryWrites=true&w=majority&appName=diet-tracker/api/Persons`)
       .then(res => {
         setPerson(res.data); // Changed from setPersons to setPerson
         setLoading(false);
@@ -112,7 +112,7 @@ const ExportPage = () => {
       content += `name: ${person.name}\n`; // Changed from person.name to t.name
       content += `age: ${person.age}\n`;
       content += `weight: ${person.weight}\n`;
-      content += `BMI: ${person.bmi}\n`;
+      content += `BMI: ${person.BMI}\n`;
       content += `contact_number: ${person.contact_number}\n`; // Changed from person.weight to t.weight
       content += '\n----------------------------\n\n';
     });
