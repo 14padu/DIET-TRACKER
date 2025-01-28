@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import {
-  Slide,
-  ToastContainer,
-  toast
-} from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import {  Grid, Typography, TextField, Button, Box, Paper } from '@mui/material';
 import 'react-toastify/dist/ReactToastify.css';
-import {
-  Container,
-  Grid,
-  Typography,
-  TextField,
-  Button,
-  Box,
-  Paper,
-} from '@mui/material';
+import { Container } from '@mui/material';
 import axios from 'axios';
 
 // const URL = process.env.REACT_APP_URL;
@@ -33,9 +23,26 @@ const CreatePerson = () => {
     setPerson({ ...person, [e.target.name]: e.target.value });
   };
 
+  axios.defaults.baseURL = `https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person`;
+
   const onSubmit = (e) => {
     e.preventDefault();
 
+  if (!person.name || !person.age || !person.contact_number || !person.weight || !person.BMI) {
+    toast.error('Please fill all the fields!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Slide,
+    });
+    return;
+  }
+  
     axios
       .post(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person`, person)
       .then(() => {
@@ -60,9 +67,12 @@ const CreatePerson = () => {
 
         setTimeout(() => {
           navigate('/');
-        }, 2000);
+        }, 5000);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log('Error in CreatePerson!');
+        console.log('The error is -> ', err);
+
         toast.error('Something went wrong, try again!', {
           position: "top-right",
           autoClose: 5000,
@@ -128,10 +138,10 @@ const CreatePerson = () => {
               <TextField
                 fullWidth
                 label="BMI"
-                name="bmi"
+                name="BMI"
                 variant="outlined"
                 type="number"
-                value={person.bmi}
+                value={person.BMI}
                 onChange={onChange}
                 required
               />

@@ -12,7 +12,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const URL = process.env.REACT_APP_URL;
+// const URL = process.env.REACT_APP_URL;
 
 const UpdatePersonInfo = () => {
   const [person, setPerson] = useState({
@@ -28,7 +28,7 @@ const UpdatePersonInfo = () => {
 
   useEffect(() => {
     axios
-      .get(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person/${id}`)
+      .get(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person/`)
       .then((res) => setPerson(res.data))
       .catch(() => toast.error("Failed to fetch person details!", { theme: "dark" }));
   }, [id]);
@@ -40,7 +40,7 @@ const UpdatePersonInfo = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person/${id}`, person)
+      .put(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person/`, person)
       .then(() => {
         toast.success("Person updated successfully!", { theme: "dark" });
         setTimeout(() => navigate(`/detail/${id}`), 2000);

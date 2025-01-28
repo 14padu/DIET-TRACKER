@@ -19,7 +19,7 @@ import PersonCard from './PersonCard';
 import axios from 'axios';
 
  // Access environment variable
-const URL = process.env.REACT_APP_URL; 
+// const URL = process.env.REACT_APP_URL; 
 
 const SearchPerson = () => {
   const [person, setPerson] = useState([]);

@@ -8,7 +8,7 @@ import { Grid } from '@mui/material';
 
 import PersonCard from './PersonCard';
 
-const URL = process.env.REACT_APP_URL;
+// const URL = process.env.REACT_APP_URL;
 
 function ShowPersonList() {
   const [person, setPerson] = useState([]);

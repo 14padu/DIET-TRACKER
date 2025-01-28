@@ -11,7 +11,6 @@ import {
   CardContent,
   Fade,
   CircularProgress,
-  //Divider
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
@@ -25,7 +24,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import NotesIcon from '@mui/icons-material/Notes';
 import axios from 'axios';
 
-const URL = process.env.REACT_APP_URL;
+// const URL = process.env.REACT_APP_URL;
 
 const HomePage = () => {
   const [stats, setStats] = useState({
@@ -52,7 +51,7 @@ const HomePage = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error fetching states:', err);
+        console.error('Error fetching stats:', err);
         setLoading(false);
       });
   }, []);

@@ -15,7 +15,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const URL = process.env.REACT_APP_URL;
+// const URL = process.env.REACT_APP_URL;
 
 const ShowPersonDetails = () => {
   const [person, setPerson] = useState({});
