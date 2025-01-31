@@ -35,9 +35,10 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person`)
+    axios.get(`https://3000-14padu-diettracker-o5gsxf21sio.ws-us117.gitpod.io/api/Person`)
       .then(res => {
-        const person = res.data;
+        console.log(res);
+        const person = res;
         const uniquePerson = new Set(person.map(person => person.author)).size;
         const recentperson = person.sort((a, b) =>
           new Date(b.published_date) - new Date(a.published_date)

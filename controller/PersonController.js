@@ -21,7 +21,7 @@ exports.getAllPerson= async (req, res) => {
         const allPerson = await PersonModel.find();
         res.send(allPerson);
     } catch (err) {
-        res.status(400).send(err.message);
+        res.status(400).send(err);
     }
     //console.log(dietController);
 };

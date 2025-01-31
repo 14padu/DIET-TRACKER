@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { Slide, ToastContainer, toast } from 'react-toastify';
-import {  Grid, Typography, TextField, Button, Box, Paper } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+  Slide,
+  ToastContainer,
+  toast
+} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Container } from '@mui/material';
+import {
+  Container,
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  Box,
+  Paper,
+} from '@mui/material';
 import axios from 'axios';
 
-// const URL = process.env.REACT_APP_URL;
+//const URL = process.env.REACT_APP_URL;
 
 const CreatePerson = () => {
   const navigate = useNavigate();
@@ -23,35 +33,18 @@ const CreatePerson = () => {
     setPerson({ ...person, [e.target.name]: e.target.value });
   };
 
-  axios.defaults.baseURL = `https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person`;
-
   const onSubmit = (e) => {
     e.preventDefault();
 
-  if (!person.name || !person.age || !person.contact_number || !person.weight || !person.BMI) {
-    toast.error('Please fill all the fields!', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Slide,
-    });
-    return;
-  }
-  
     axios
-      .post(`https://3000-14padu-diettracker-vye23yp7ujn.ws-us117.gitpod.io/api/Person`, person)
+      .post(`https://3000-14padu-diettracker-o5gsxf21sio.ws-us117.gitpod.io/api/Person`, person)
       .then(() => {
         setPerson({
           name: '',
           age: '',
           contact_number: '',
           weight: '',
-          BMI: '',
+          bmi: '',
         });
 
         toast.success('Person added successfully!', {
@@ -67,12 +60,9 @@ const CreatePerson = () => {
 
         setTimeout(() => {
           navigate('/');
-        }, 5000);
+        }, 2000);
       })
-      .catch((err) => {
-        console.log('Error in CreatePerson!');
-        console.log('The error is -> ', err);
-
+      .catch(() => {
         toast.error('Something went wrong, try again!', {
           position: "top-right",
           autoClose: 5000,
