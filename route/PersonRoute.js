@@ -6,10 +6,10 @@ const PersonController = require('../controller/PersonController.js'); // Ensure
 // router.get ('/test', (req,res)=>{
 //     res.status(200).send('test route is working');
 // })
-router.post('/Person', PersonController.createPerson);
-router.get('/Person', PersonController.getAllPerson);
-router.get('/Person/:id',PersonController.getPersonById);
-router.put('/Person/:id', PersonController.updatePerson);   
-router.delete('/Person/:id',PersonController.deletePerson);
+router.post('/persons', PersonController.createPerson);
+router.get('/persons', PersonController.getAllPerson);
+router.get('/persons/:id',PersonController.getPersonById);
+router.put('/persons/:id', PersonController.updatePerson);   
+router.delete('/persons/:id',PersonController.deletePerson);
 
 module.exports = router;

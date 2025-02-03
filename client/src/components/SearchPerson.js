@@ -34,7 +34,7 @@ const SearchPerson = () => {
 
   useEffect(() => {
     axios
-      .get(`https://3000-14padu-diettracker-o5gsxf21sio.ws-us117.gitpod.io/api/Person`)
+      .get(`https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/Person`)
       .then((res) => {
         setPerson(res.data);
         setFilteredPerson(res.data);

@@ -24,34 +24,35 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import NotesIcon from '@mui/icons-material/Notes';
 import axios from 'axios';
 
-// const URL = process.env.REACT_APP_URL;
+// Backend URL - update if necessary
+//const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
 const HomePage = () => {
   const [stats, setStats] = useState({
     totalPersons: 0,
-    uniqueAuthors: 0,
-    recentPerson: null
+    uniquePersons: 0,
+    recentPerson: null,
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`https://3000-14padu-diettracker-o5gsxf21sio.ws-us117.gitpod.io/api/Person`)
-      .then(res => {
-        console.log(res);
-        const person = res;
-        const uniquePerson = new Set(person.map(person => person.author)).size;
-        const recentperson = person.sort((a, b) =>
-          new Date(b.published_date) - new Date(a.published_date)
-        )[0];
+    axios
+      .get(`https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/persons`) // Ensure the correct endpoint
+      .then((res) => {
+        const persons = res.data;
+        const uniquePersons = new Set(persons.map((p) => p.author)).size;
+        const recentPerson = persons.length
+          ? persons.sort((a, b) => new Date(b.published_date) - new Date(a.published_date))[0]
+          : null;
 
         setStats({
-          totalPersons: person.length,
-          uniquePerson,
-          recentperson
+          totalPersons: persons.length,
+          uniquePersons,
+          recentPerson,
         });
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error('Error fetching stats:', err);
         setLoading(false);
       });
@@ -132,128 +133,46 @@ const HomePage = () => {
 
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
-            <Button
-              component={Link}
-              to="/person-list"
-              variant="contained"
-              size="large"
-              startIcon={<LibraryBooksIcon />}
-              fullWidth
-              sx={{ py: 2 }}
-            >
+            <Button component={Link} to="/person-list" variant="contained" size="large" startIcon={<LibraryBooksIcon />} fullWidth sx={{ py: 2 }}>
               View Persons
             </Button>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Button
-              component={Link}
-              to="/person-create"
-              variant="contained"
-              size="large"
-              startIcon={<AddIcon />}
-              fullWidth
-              sx={{ py: 2 }}
-            >
+            <Button component={Link} to="/person-create" variant="contained" size="large" startIcon={<AddIcon />} fullWidth sx={{ py: 2 }}>
               Add New Person
             </Button>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Button
-              component={Link}
-              to="/export"
-              variant="contained"
-              size="large"
-              startIcon={<DownloadIcon />}
-              fullWidth
-              sx={{ py: 2 }}
-            >
+            <Button component={Link} to="/export" variant="contained" size="large" startIcon={<DownloadIcon />} fullWidth sx={{ py: 2 }}>
               Export Data
             </Button>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Button
-              component={Link}
-              to="/qr-codes"
-              variant="contained"
-              size="large"
-              startIcon={<QrCodeIcon />}
-              fullWidth
-              sx={{ py: 2 }}
-            >
+            <Button component={Link} to="/qr-codes" variant="contained" size="large" startIcon={<QrCodeIcon />} fullWidth sx={{ py: 2 }}>
               QR Codes
             </Button>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Button
-              component={Link}
-              to="/notes/home"
-              variant="contained"
-              size="large"
-              startIcon={<NotesIcon />}
-              fullWidth
-              sx={{ py: 2 }}
-            >
+            <Button component={Link} to="/notes/home" variant="contained" size="large" startIcon={<NotesIcon />} fullWidth sx={{ py: 2 }}>
               Notes
             </Button>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Button
-              component="a"
-              href="https://github.com/14padu/DIET-TRACKER"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="contained"
-              size="large"
-              startIcon={<GitHubIcon />}
-              fullWidth
-              sx={{ py: 2 }}
-            >
+            <Button component="a" href="https://github.com/14padu/DIET-TRACKER.git" target="_blank" rel="noopener noreferrer" variant="contained" size="large" startIcon={<GitHubIcon />} fullWidth sx={{ py: 2 }}>
               GitHub
             </Button>
           </Grid>
 
-          {/* Resume Button */}
-        <Grid item xs={12} sm={6} md={3}>
-              <Button
-                component="a"
-                href="https://docs.google.com/document/d/1WEwJ5rvyI8gxGWORNP_9uGzvybJHzdb0NUSvQd-b-O0/edit?tab=t.0"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="contained"
-                startIcon={<MenuBookIcon />}
-                size="large"
-                fullWidth
-                sx={{
-                  padding: '16px',
-                  borderRadius: '8px',
-                  boxShadow: 2,
-                  '&:hover': { boxShadow: 6 },
-                }}
-              >
-                Resume
-              </Button>
-            </Grid>
-
-
           <Grid item xs={12} sm={6} md={4}>
-            <Button
-              component={Link}
-              to="/search"
-              variant="contained"
-              size="large"
-              startIcon={<SearchIcon />}
-              fullWidth
-              sx={{ py: 2 }}
-            >
+            <Button component={Link} to="/search" variant="contained" size="large" startIcon={<SearchIcon />} fullWidth sx={{ py: 2 }}>
               Search Persons
             </Button>
           </Grid>
-
         </Grid>
       </Container>
     </Fade>

@@ -23,12 +23,12 @@ const QRCodePage = () => {
   const [loading, setLoading] = useState(true);
 
   // Base URL for accessing diet details (to be embedded in QR code)
-  const baseUrl = `https://3000-14padu-diettracker-o5gsxf21sio.ws-us117.gitpod.io/api/Person`;
+  const baseUrl = `https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/Person`;
 
   // Fetch diet data when the component loads
   useEffect(() => {
     axios
-      .get(`https://3000-14padu-diettracker-o5gsxf21sio.ws-us117.gitpod.io/api/Person`) // API endpoint to fetch clinic data
+      .get(`https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/Person`) // API endpoint to fetch clinic data
       .then(res => {
         console.log(res.data); // Debug: inspect the API response
         // Safeguard: Ensure person is an array
