@@ -28,7 +28,7 @@ const UpdatePersonInfo = () => {
 
   useEffect(() => {
     axios
-      .get(`https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/Person`)
+      .get(`https://5000-14padu-diettracker-az0d7vyurd8.ws-us117.gitpod.io/api/person`)
       .then((res) => setPerson(res.data))
       .catch(() => toast.error("Failed to fetch person details!", { theme: "dark" }));
   }, [id]);
@@ -40,7 +40,7 @@ const UpdatePersonInfo = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/Person`, person)
+      .put(`https://5000-14padu-diettracker-az0d7vyurd8.ws-us117.gitpod.io/api/person`, person)
       .then(() => {
         toast.success("Person updated successfully!", { theme: "dark" });
         setTimeout(() => navigate(`/detail/${id}`), 2000);

@@ -37,7 +37,7 @@ const HomePage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/persons`) // Ensure the correct endpoint
+      .get(`https://5000-14padu-diettracker-az0d7vyurd8.ws-us117.gitpod.io/api/person`) // Ensure the correct endpoint
       .then((res) => {
         const persons = res.data;
         const uniquePersons = new Set(persons.map((p) => p.author)).size;

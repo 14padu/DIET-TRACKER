@@ -23,7 +23,7 @@ const QRCodePage = () => {
   const [loading, setLoading] = useState(true);
 
   // Base URL for accessing diet details (to be embedded in QR code)
-  const baseUrl = `https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/Person`;
+  const baseUrl = `https://5000-14padu-diettracker-az0d7vyurd8.ws-us117.gitpod.io/api/person`;
 
   // Fetch diet data when the component loads
   useEffect(() => {

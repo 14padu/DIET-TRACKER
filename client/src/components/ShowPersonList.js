@@ -16,7 +16,7 @@ function ShowPersonList() {
 
   useEffect(() => {
     axios
-      .get(`https://3000-14padu-diettracker-chv0inba8k3.ws-us117.gitpod.io/api/persons`)
+      .get(`https://5000-14padu-diettracker-az0d7vyurd8.ws-us117.gitpod.io/api/person`)
       
       .then((res) => {
         setPerson(res.data);
