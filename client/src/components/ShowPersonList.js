@@ -13,10 +13,10 @@ import PersonCard from './PersonCard';
 function ShowPersonList() {
   const [person, setPerson] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state
-
+  
   useEffect(() => {
     axios
-      .get(`https://5000-14padu-diettracker-az0d7vyurd8.ws-us117.gitpod.io/api/person`)
+      .get(`https://3000-14padu-diettracker-l9ialcss88u.ws-us117.gitpod.io/api/person`)
       
       .then((res) => {
         setPerson(res.data);
