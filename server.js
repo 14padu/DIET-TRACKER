@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const personRoute = require('./route/PersonRoute');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ app.get("/home", (req, res) => {
 
 // Person API Routes
 app.use('/api/person', personRoute);
+
 
 // Start Server
 app.listen(PORT, () => {
