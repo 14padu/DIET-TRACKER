@@ -24,8 +24,6 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import NotesIcon from '@mui/icons-material/Notes';
 import axios from 'axios';
 
-// Backend URL - update if necessary
-//const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
 const HomePage = () => {
   const [stats, setStats] = useState({
@@ -37,7 +35,7 @@ const HomePage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://5000-14padu-diettracker-pswgxrb8wcl.ws-us117.gitpod.io/api/person`) // Ensure the correct endpoint
+      .get(`https://diet-tracker-8a64.onrender.com/api/person`) // Ensure the correct endpoint
       .then((res) => {
         const persons = res.data;
         const uniquePersons = new Set(persons.map((p) => p.author)).size;

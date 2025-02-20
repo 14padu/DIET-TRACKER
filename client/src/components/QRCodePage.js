@@ -17,11 +17,11 @@ const QRCodePage = () => {
   const [persons, setPersons] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const baseUrl = `https://5000-14padu-diettracker-pswgxrb8wcl.ws-us117.gitpod.io/api/person/`;
+  const baseUrl = `https://diet-tracker-8a64.onrender.com/`;
 
   useEffect(() => {
     axios
-      .get(`https://5000-14padu-diettracker-pswgxrb8wcl.ws-us117.gitpod.io/api/person`)
+      .get(`https://diet-tracker-8a64.onrender.com/api/person`)
       .then(res => {
         console.log(res.data);
         setPersons(Array.isArray(res.data) ? res.data : []);

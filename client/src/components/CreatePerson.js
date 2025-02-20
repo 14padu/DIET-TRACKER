@@ -37,7 +37,7 @@ const CreatePerson = () => {
     e.preventDefault();
 
     axios
-      .post(`https://5000-14padu-diettracker-pswgxrb8wcl.ws-us117.gitpod.io/api/person`, person)
+      .post(`https://diet-tracker-8a64.onrender.com/api/person`, person)
       .then(() => {
         setPerson({
           name: '',
@@ -152,7 +152,7 @@ const CreatePerson = () => {
               <Box display="flex" justifyContent="space-between">
                 <Button
                   component={Link}
-                  to="/"
+                  to="/person-list"
                   variant="outlined"
                   color="secondary"
                 >

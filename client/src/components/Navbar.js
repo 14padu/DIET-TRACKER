@@ -15,13 +15,13 @@ import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook'; 
 
 const notesPages = [
-    { title: 'Home', path: '/notes/home' },
-    { title: 'Schedule', path: '/notes/schedule' },
-  ];
-  
-  const Navbar = () => {
-    const [notesAnchorEl, setNotesAnchorEl] = useState(null);
-  
+  { title: 'Home', path: '/notes/home' },
+  { title: 'Schedule', path: '/notes/schedule' },
+];
+
+const Navbar = () => {
+  const [notesAnchorEl, setNotesAnchorEl] = useState(null);
+
   const handleNotesClick = (event) => {
     setNotesAnchorEl(event.currentTarget);
   };
@@ -33,10 +33,17 @@ const notesPages = [
   return (
     <AppBar position="static" color="transparent" elevation={0} sx={{ width: '100%' }}>
       <Toolbar>
-        <Typography  variant="h5" component="div" sx={{ flexGrow: 1, color: 'primary.main' }}>
-        Diet Tracker Project
+        {/* Clickable Title */}
+        <Typography
+          variant="h5"
+          component={RouterLink} 
+          to="/"  
+          sx={{ flexGrow: 1, color: 'primary.main', textDecoration: 'none' }}
+        >
+          Diet Tracker Project
         </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Button
             color="primary"
             component={RouterLink}
@@ -45,10 +52,12 @@ const notesPages = [
           >
             Home
           </Button>
+          
+          {/* Notes Dropdown */}
           <Button
             color="primary"
             onClick={handleNotesClick}
-            startIcon={<MenuBookIcon />} // Added icon here
+            startIcon={<MenuBookIcon />}
           >
             Notes
           </Button>
@@ -68,6 +77,8 @@ const notesPages = [
               </MenuItem>
             ))}
           </Menu>
+
+          {/* GitHub Icon */}
           <IconButton
             color="primary"
             component="a"
