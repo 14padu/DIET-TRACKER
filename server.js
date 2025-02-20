@@ -29,6 +29,18 @@ app.get("/home", (req, res) => {
 app.use('/api/person', personRoute);
 
 
+// SERVE STATIC FILES
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "./client/build/index.html"),
+        function (err) {
+            res.status(500).send(err);
+        }
+    );
+});
+
+
 // Start Server
 app.listen(PORT, () => {
     console.log(`✅ Server is running at http://localhost:${PORT}`);

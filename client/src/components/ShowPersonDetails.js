@@ -24,14 +24,14 @@ const ShowPersonDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://5000-14padu-diettracker-l9ialcss88u.ws-us117.gitpod.io/api/person/${id}`)
+      .get(`https://5000-14padu-diettracker-pswgxrb8wcl.ws-us117.gitpod.io/api/person/${id}`)
       .then((res) => setPerson(res.data))
       .catch((err) => toast.error("Failed to fetch person details!", { theme: "dark" }));
   }, [id]);
 
   const handleDelete = () => {
     axios
-      .delete(`https://5000-14padu-diettracker-l9ialcss88u.ws-us117.gitpod.io/api/person`)
+      .delete(`https://5000-14padu-diettracker-pswgxrb8wcl.ws-us117.gitpod.io/api/person`)
       .then(() => {
         toast.success("Person deleted successfully!", { theme: "dark" });
         setTimeout(() => navigate("/"), 2000);
