@@ -1,5 +1,7 @@
 Diet Tracker Application
+
 Diet Tracker Syatem - MERN Stack Project
+
 A comprehensive CRUD application for managing diets, built with the MERN stack (MongoDB, Express, React, Node.js) and Material UI.
 
 Here are some the important links
